@@ -26,5 +26,4 @@ public class TesteNome implements CommandLineRunner{
 		pessoaRepository.saveAll(Arrays.asList(p1, p2));
 		
 	}
-
 }

@@ -1,20 +1,35 @@
 package com.wanzeler.apinome.resources;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.io.Serializable;
 
-import com.wanzeler.apinome.entities.Pessoa;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@RestController
-@RequestMapping(value = "/pessoas")
-public class PessoaResource {
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
+public class PessoaResource implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+
+	@JsonProperty("nome_pessoa")
+	private String nome;
 	
-	@GetMapping
-	public ResponseEntity<Pessoa> findAll(){
-		Pessoa ps = new Pessoa(1l, "Migel", "migel@gmail.con", "Av. Brasil 33.000");
-		return ResponseEntity.ok().body(ps);
-	}
-
+	@JsonProperty("email")
+	private String email;
+	
+	@JsonProperty("endereco")
+	private String endereco;
+	
+	@JsonProperty("id_Pessoa")
+	private String idPessoa; 
 }
