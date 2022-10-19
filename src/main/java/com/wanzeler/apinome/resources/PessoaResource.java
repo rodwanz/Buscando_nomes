@@ -29,7 +29,5 @@ public class PessoaResource implements Serializable{
 	
 	@JsonProperty("endereco")
 	private String endereco;
-	
-	@JsonProperty("id_Pessoa")
-	private String idPessoa; 
+ 
 }
