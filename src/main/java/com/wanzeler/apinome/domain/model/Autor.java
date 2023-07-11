@@ -1,13 +1,13 @@
-package com.wanzeler.apinome.entities;
-
-import java.io.Serializable;
+package com.wanzeler.apinome.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -21,19 +21,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "pessoas")
-public class Pessoa implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class Autor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@NotBlank
+	@Size(max = 100)
+	@Column(name = "nome")
 	private String nome;
 	
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "endereco")
-	private String endereco;
+	//@JsonIgnore
+	//@OneToMany(mappedBy = "autor")
+	//private List<Livro> livros = new ArrayList<>();
 
 }
