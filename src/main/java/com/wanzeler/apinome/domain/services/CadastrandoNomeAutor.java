@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wanzeler.apinome.domain.exception.AutorNotFound;
+import com.wanzeler.apinome.domain.exception.AutorNaoEncontrado;
 import com.wanzeler.apinome.domain.model.Autor;
 import com.wanzeler.apinome.domain.repositories.AutorRepository;
 
@@ -21,8 +21,8 @@ public class CadastrandoNomeAutor {
 	}
 	
 	@Transactional(readOnly = false)
-	public Autor salvandoAutor(Long id) {
+	public Autor encontraENaoEncontraAutor(Long id) {
 		return autorRepository.findById(id)
-				.orElseThrow(() -> new AutorNotFound("Autor não encontrado!"));		
+				.orElseThrow(() -> new AutorNaoEncontrado(String.format("Autor não encontrado!")));		
 	}
 }
